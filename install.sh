@@ -18,7 +18,7 @@ if [ $(id -u) -ne 0 ]; then
 fi
 
 cmd="ln"
-ops="-s"
+ops="-Ffs"
 
 while [ $# -gt 0 ]; do
 	case "$1" in
@@ -40,7 +40,7 @@ for src in *; do
 	# backup user configuration
 	test -e "$dest" && mv "$dest" "$dest~"
 
-	$cmd $ops "$src" "$dest"
+	$cmd $ops "$PWD/$src" "$dest"
 	test $? -ne 0 && exit 1;
 
 	chmod +x "$dest"
