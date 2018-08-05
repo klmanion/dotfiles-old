@@ -1,0 +1,216 @@
+".vimrc
+
+" Vi-compatibility {{{
+"
+
+" cpoptions {{{
+" options that effect the behavior of both compatibility modes
+" Vim default: aAbceFs
+" Vi default: (all flags)
+"
+" Enabling or disabling any of these options cause them to be adhered to or not
+" adhered to in compatibility or non-compatibility mode
+"
+
+" When enabled, a backslash has no special meaning in mappings
+" When disabled, a backslash may be used like CTRL-V
+set cpo-=B
+
+" When executing a register always add a <CR> to the last line
+" Disabled this allows editing of the last line before execution
+set cpo+=e
+
+" When enabled, goto line 1 when using :edit without argument
+set cpo-=g
+
+" When enabled, interrupting the reading of a file will leave it modified
+set cpo-=i
+
+" Do not allow for the autocompletion of incomplete key mappings
+" Allows one to cancel any command they have not finished typing
+" Enable this for vi key mapping autocompletion
+" Also see cpo-k
+set cpo-=K
+
+" Enabled, backslash in a regex's [] range is taken literally,
+" only `\]', `\^', `\-', and `\\' are special
+" cpo-l
+
+" Excluded, `%' matching will take backslashes into account
+set cpo-=M
+
+" Excluded, uses a better algorithm for Lisp indentation
+set cpo-=p
+
+" Included, rubed-out character remain visible on the screen and are
+" overwritten by newly typed text
+" cpo-v
+
+" Dont overwrite a readonly file
+set cpo+=WZ
+
+" <Esc> on the command-line executes the command-line
+set cpo-=x
+
+" Excluded, parenthesis inside quotations are treated specially
+set cpo-=%
+
+" Included, disables recognition of special key codes in <> form
+set cpo-='<'
+
+" }}}
+
+set nocompatible
+" }}}
+
+" Color {{{
+"
+
+" set notermguicolors
+let &t_Co=256
+colorscheme default
+" even though I use a dark terminal I prefer the colors used for light
+" backgtrounds
+set background=light
+" }}}
+
+" Misc settings {{{
+"
+set hidden
+
+set wildmenu
+
+set showcmd
+
+set nohlsearch
+
+set ignorecase
+set smartcase
+
+set backspace=indent,eol,start
+
+set nostartofline
+" }}}
+
+" Folding rules {{{
+"
+set foldenable
+if &foldenable
+	set foldmethod=marker
+	set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+
+	" unfold all
+	" set foldlevelstart=99
+	
+	" add a fold collumn
+	" set foldcolumn=2
+endif
+" }}}
+
+" Status line {{{
+"
+set noruler
+set laststatus=2
+set statusline=%<%f\ %m
+set statusline+=%= " left-right divider
+set statusline+=%y\ %l:%c%V\ --\ %p%%
+" }}}
+
+" Syntax {{{
+"
+filetype on
+filetype indent plugin on
+
+syntax on
+
+set number
+
+set ts=4
+set sw=4
+set noexpandtab
+set tw=79
+
+set cindent
+
+imap <C-l> λ
+
+" Filetype autocommands {{{
+if has('autocmd')
+	augroup Racket " {{{
+		autocmd!
+		au BufReadPost *.rkt,*.rktl set syntax=racket filetype=racket
+		au filetype racket set lisp
+		au filetype racket set autoindent " turns off cindent
+		au filetype racket set ts=2
+		au filetype racket set sw=2
+		au filetype racket set expandtab
+	augroup END " }}}
+	augroup C " {{{
+		autocmd!
+		au filetype C set ts=8
+		au filetype C set sw=8
+		au filetype C set noexpandtab
+		au filetype C set cinoptions=
+		au filetype C set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
+		au filetype C set cino+=Ls,:0,=s,l1,b0
+		au filetype C set cino+=g0,hs,N0,E-s,i0
+		au filetype C set cino+=p.5s,+s,t0
+		au filetype C set cino+=c3,C1,/0
+		au filetype C set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
+		au filetype C set cino+=j1,J1 " these are java settings
+		au filetype C set cino+=)80,*200,#0
+	augroup END " }}}
+	augroup CPP " {{{
+		autocmd!
+		au filetype CPP set ts=8
+		au filetype CPP set sw=8
+		au filetype CPP set noexpandtab
+		au filetype CPP set cinoptions=
+		au filetype CPP set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
+		au filetype CPP set cino+=Ls,:0,=s,l1,b0
+		au filetype CPP set cino+=g0,hs,N0,E-s,i0
+		au filetype CPP set cino+=p.5s,+s,t0
+		au filetype CPP set cino+=c3,C1,/0
+		au filetype CPP set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
+		au filetype CPP set cino+=j1,J1 " these are java settings
+		au filetype CPP set cino+=)80,*200,#0
+	augroup END " }}}
+
+endif
+" }}}
+
+set modeline
+set modelines=5
+" }}}
+
+" Plugins {{{
+"
+
+execute pathogen#infect()
+
+" VimTeX {{{
+" 
+let g:vimtex_view_general_viewer='/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options='-r @line @pdf @tex'
+let g:vimtex_fold_enabled=0
+" }}}
+
+" Powerline {{{
+if $USE_POWERLINE == 1
+	set rtp+='/usr/local/lib/Python3.6/site-packages/powerline/bindings/vim'
+
+	let g:powerline_pycmd='py3'
+	let g:powerline_pyeval='py3eval'
+	let g:Powerline_symbols='fancy'
+
+	set laststatus=2
+	set noshowmode
+
+	python3 from powerline.vim import setup as powerline_setup
+	python3 powerline_setup()
+	python3 del powerline_setup
+endif
+" }}}
+" }}}
+
+" vim: set ts=4 sw=4 noexpandtab tw=79:

@@ -1,0 +1,10 @@
+# .zsh_profile
+
+if [ -x "$HOME/.profile" ]; then
+	source "$HOME/.profile"
+fi
+
+if [ -x "/Applications/Racket/share/pkgs/shell-completion/racket-completion.zsh" ]; then
+	source "/Applications/Racket/share/pkgs/shell-completion/racket-completion.zsh" 
+fi
+

@@ -1,0 +1,12 @@
+#.bash_profile
+
+if [ -x "$HOME/.profile" ]; then
+	source "$HOME/.profile"
+fi
+
+if [ -x "/Applications/Racket/share/pkgs/shell-completion/racket-completion.bash" ]; then
+	source "/Applications/Racket/share/pkgs/shell-completion/racket-completion.bash"
+fi
+
+export PAGER="most"
+

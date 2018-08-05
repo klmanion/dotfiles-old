@@ -1,0 +1,33 @@
+# .profile
+
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+export PATH="/Applications/Racket/bin:$PATH"
+export MANPATH="/Applications/Racket/man:$MANPATH"
+
+export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
+export MANPATH="/usr/local/texlive/2017/texmf/doc/man:$MANPATH"
+export INFOPATH="/usr/local/texlive/2017/texmf/doc/info:$INFOPATH"
+
+export PATH="/usr/local/checker-279/bin:$PATH"
+
+export PATH="/usr/local/MacGPG2/bin:$PATH"
+
+export EDITOR="vim"
+export PAGER="less"
+
+export LYNX_CFG="$HOME/.lynx.cfg"
+
+unset CLICOLOR
+export TERM="xterm-256color"
+
+if [[ x"$TERM_PROGRAM" == x"iTerm.app" ]]; then
+	if [ -x `which powerline-daemon` ]; then
+		export USE_POWERLINE=1
+		`which powerline-daemon` -q
+	fi
+fi
+
+if [ -x "$HOME/.aliases" ]; then
+	source "$HOME/.aliases"
+fi
