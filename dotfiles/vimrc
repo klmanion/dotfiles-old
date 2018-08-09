@@ -134,13 +134,16 @@ set cindent
 
 imap <C-l> λ
 
+set lispwords+=define/contract
+
 " Filetype autocommands {{{
 if has('autocmd')
 	augroup Racket " {{{
 		autocmd!
 		au BufReadPost *.rkt,*.rktl set syntax=racket filetype=racket
+		au filetype racket set nocindent
+		au filetype racket set autoindent
 		au filetype racket set lisp
-		au filetype racket set autoindent " turns off cindent
 		au filetype racket set ts=2
 		au filetype racket set sw=2
 		au filetype racket set expandtab
