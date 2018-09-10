@@ -134,51 +134,50 @@ set cindent
 
 imap <C-l> λ
 
-set lispwords+=define/contract
+set lispwords+=define/contract,λ
 
 " Filetype autocommands {{{
 if has('autocmd')
 	augroup Racket " {{{
 		autocmd!
-		au BufReadPost *.rkt,*.rktl set syntax=racket filetype=racket
-		au filetype racket set nocindent
-		au filetype racket set autoindent
-		au filetype racket set lisp
-		au filetype racket set ts=2
-		au filetype racket set sw=2
-		au filetype racket set expandtab
+		au BufReadPost *.rkt,*.rktl set syntax=racket FileType=racket
+		au FileType racket set nocindent
+		au FileType racket set autoindent
+		au FileType racket set lisp
+		au FileType racket set ts=2
+		au FileType racket set sw=2
+		au FileType racket set expandtab
 	augroup END " }}}
 	augroup C " {{{
 		autocmd!
-		au filetype C set ts=8
-		au filetype C set sw=8
-		au filetype C set noexpandtab
-		au filetype C set cinoptions=
-		au filetype C set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
-		au filetype C set cino+=Ls,:0,=s,l1,b0
-		au filetype C set cino+=g0,hs,N0,E-s,i0
-		au filetype C set cino+=p.5s,+s,t0
-		au filetype C set cino+=c3,C1,/0
-		au filetype C set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
-		au filetype C set cino+=j1,J1 " these are java settings
-		au filetype C set cino+=)80,*200,#0
+		au FileType C set ts=8
+		au FileType C set sw=8
+		au FileType C set noexpandtab
+		au FileType C set cinoptions=
+		au FileType C set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
+		au FileType C set cino+=Ls,:0,=s,l1,b0
+		au FileType C set cino+=g0,hs,N0,E-s,i0
+		au FileType C set cino+=p.5s,+s,t0
+		au FileType C set cino+=c3,C1,/0
+		au FileType C set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
+		au FileType C set cino+=j1,J1 " these are java settings
+		au FileType C set cino+=)80,*200,#0
 	augroup END " }}}
 	augroup CPP " {{{
 		autocmd!
-		au filetype CPP set ts=8
-		au filetype CPP set sw=8
-		au filetype CPP set noexpandtab
-		au filetype CPP set cinoptions=
-		au filetype CPP set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
-		au filetype CPP set cino+=Ls,:0,=s,l1,b0
-		au filetype CPP set cino+=g0,hs,N0,E-s,i0
-		au filetype CPP set cino+=p.5s,+s,t0
-		au filetype CPP set cino+=c3,C1,/0
-		au filetype CPP set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
-		au filetype CPP set cino+=j1,J1 " these are java settings
-		au filetype CPP set cino+=)80,*200,#0
+		au FileType CPP set ts=8
+		au FileType CPP set sw=8
+		au FileType CPP set noexpandtab
+		au FileType CPP set cinoptions=
+		au FileType CPP set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
+		au FileType CPP set cino+=Ls,:0,=s,l1,b0
+		au FileType CPP set cino+=g0,hs,N0,E-s,i0
+		au FileType CPP set cino+=p.5s,+s,t0
+		au FileType CPP set cino+=c3,C1,/0
+		au FileType CPP set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
+		au FileType CPP set cino+=j1,J1 " these are java settings
+		au FileType CPP set cino+=)80,*200,#0
 	augroup END " }}}
-
 endif
 " }}}
 
@@ -216,4 +215,4 @@ endif
 " }}}
 " }}}
 
-" vim: set ts=4 sw=4 noexpandtab tw=79:
+" vim: set ts=8 sw=8 noexpandtab tw=79:
