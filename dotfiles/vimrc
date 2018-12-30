@@ -140,7 +140,7 @@ set lispwords+=define/contract,λ
 if has('autocmd')
 	augroup Racket " {{{
 		autocmd!
-		au BufReadPost *.rkt,*.rktl set syntax=racket FileType=racket
+		au BufReadPost *.rkt,*.rktl set syntax=racket filetype=racket
 		au FileType racket set nocindent
 		au FileType racket set autoindent
 		au FileType racket set lisp

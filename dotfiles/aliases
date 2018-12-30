@@ -3,3 +3,7 @@
 unalias -a
 
 alias grep="grep --color"
+
+alias l="ls -l"
+alias la="l -A"
+
