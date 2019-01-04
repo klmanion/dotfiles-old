@@ -8,5 +8,8 @@ if [ -x "/Applications/Racket/share/pkgs/shell-completion/racket-completion.bash
 	source "/Applications/Racket/share/pkgs/shell-completion/racket-completion.bash"
 fi
 
-export PAGER="most"
+if [ -e "${HOME}/.iterm2_shell_integration.bash" ]; then
+	source "${HOME}/.iterm2_shell_integration.bash"
+fi
 
+export PAGER="most"

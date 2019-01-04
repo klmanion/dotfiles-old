@@ -6,10 +6,17 @@ fi
 
 export PAGER="most"
 
-export ZSH="/Users/kurtlmanion/.oh-my-zsh"
+if [ -e "$HOME/.oh-my-zsh" ]; then
+	export ZSH="/Users/kurtlmanion/.oh-my-zsh"
+fi
 
 if [ ${USE_POWERLINE:-0} -eq 1 ]; then
 	source "/usr/local/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh"
+fi
+
+if [ -x "$HOME/.iterm2_shell_integration.zsh" ]; then
+	source "$HOME/.iterm2_shell_integration.zsh"
+	PS1=%{$(iterm2_prompt_mark)%}$PS1
 fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"

@@ -4,6 +4,12 @@ if [ -x "$HOME/.profile" ]; then
 	source "$HOME/.profile"
 fi
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+if [ -x "$HOME/.iterm2_shell_integration.zsh" ]; then
+	source "$HOME/.iterm2_shell_integration.zsh"
+fi
+
 if [ -x "/Applications/Racket/share/pkgs/shell-completion/racket-completion.zsh" ]; then
 	source "/Applications/Racket/share/pkgs/shell-completion/racket-completion.zsh" 
 fi

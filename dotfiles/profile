@@ -22,7 +22,7 @@ unset CLICOLOR
 export TERM="xterm-256color"
 
 if [[ x"$TERM_PROGRAM" == x"iTerm.app" ]]; then
-	if [ -x `which powerline-daemon` ]; then
+	if [[ -x `which powerline-daemon` ]]; then
 		export USE_POWERLINE=1
 		`which powerline-daemon` -q
 	fi

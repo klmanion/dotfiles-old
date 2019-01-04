@@ -190,8 +190,15 @@ set modelines=5
 
 execute pathogen#infect()
 
+" Vim-Airline {{{
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16'
+
+set laststatus=2
+set noshowmode
+" }}}
+
 " VimTeX {{{
-" 
 let g:vimtex_view_general_viewer='/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options='-r @line @pdf @tex'
 let g:vimtex_fold_enabled=0
