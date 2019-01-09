@@ -188,7 +188,7 @@ set modelines=5
 " Plugins {{{
 "
 
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " Vim-Airline {{{
 let g:airline_powerline_fonts = 1
