@@ -1,23 +1,23 @@
-[submodule "dotfiles/vim/bundle/vimtex"]
-	path = dotfiles/vim/bundle/vimtex
+[submodule "dotfiles/vim/pack/plugins/vimtex"]
+	path = dotfiles/vim/pack/plugins/vimtex
 	url = https://github.com/lervag/vimtex.git
 
-[submodule "dotfiles/vim/bundle/vim-racket"]
-	path = dotfiles/vim/bundle/vim-racket
+[submodule "dotfiles/vim/pack/plugins/vim-racket"]
+	path = dotfiles/vim/pack/plugins/vim-racket
 	url = https://github.com/wlangstroth/vim-racket.git
 
-[submodule "dotfiles/vim/bundle/vim-airline"]
-	path = dotfiles/vim/bundle/vim-airline
+[submodule "dotfiles/vim/pack/plugins/vim-airline"]
+	path = dotfiles/vim/pack/plugins/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
 
-[submodule "dotfiles/vim/bundle/vim-airline-themes"]
-	path = dotfiles/vim/bundle/vim-airline-themes
+[submodule "dotfiles/vim/pack/plugins/vim-airline-themes"]
+	path = dotfiles/vim/pack/plugins/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
 
-[submodule "dotfiles/vim/bundle/vim-gitgutter"]
-	path = dotfiles/vim/bundle/vim-gitgutter
+[submodule "dotfiles/vim/pack/plugins/vim-gitgutter"]
+	path = dotfiles/vim/pack/plugins/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 
-[submodule "dotfiles/vim/bundle/vimagit"]
-	path = dotfiles/vim/bundle/vimagit
+[submodule "dotfiles/vim/pack/plugins/vimagit"]
+	path = dotfiles/vim/pack/plugins/vimagit
 	url = https://github.com/jreybert/vimagit.vim
