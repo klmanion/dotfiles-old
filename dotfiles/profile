@@ -2,12 +2,12 @@
 
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-if [ -e "/Applications/Racket" ]; then
+if [ -d "/Applications/Racket" ]; then
 	PATH="/Applications/Racket/bin:$PATH"
 	MANPATH="/Applications/Racket/man:$MANPATH"
 fi
 
-if [ -e "$HOME/.cargo/bin" ]; then
+if [ -d "$HOME/.cargo/bin" ]; then
 	PATH="$HOME/.cargo/bin:$PATH"
 fi
 
