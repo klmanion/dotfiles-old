@@ -2,16 +2,26 @@
 
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-export PATH="/Applications/Racket/bin:$PATH"
-export MANPATH="/Applications/Racket/man:$MANPATH"
+if [ -e "/Applications/Racket" ]; then
+	PATH="/Applications/Racket/bin:$PATH"
+	MANPATH="/Applications/Racket/man:$MANPATH"
+fi
 
-export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
-export MANPATH="/usr/local/texlive/2017/texmf/doc/man:$MANPATH"
-export INFOPATH="/usr/local/texlive/2017/texmf/doc/info:$INFOPATH"
+if [ -e "$HOME/.cargo/bin" ]; then
+	PATH="$HOME/.cargo/bin:$PATH"
+fi
 
-export PATH="/usr/local/checker-279/bin:$PATH"
+#export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
+#export MANPATH="/usr/local/texlive/2017/texmf/doc/man:$MANPATH"
+#export INFOPATH="/usr/local/texlive/2017/texmf/doc/info:$INFOPATH"
 
-export PATH="/usr/local/MacGPG2/bin:$PATH"
+#export PATH="/usr/local/checker-279/bin:$PATH"
+
+#export PATH="/usr/local/MacGPG2/bin:$PATH"
+
+export PATH
+export MANPATH
+#export INFOPATH
 
 export EDITOR="vim"
 export PAGER="less"
@@ -22,10 +32,7 @@ unset CLICOLOR
 export TERM="xterm-256color"
 
 if [[ x"$TERM_PROGRAM" == x"iTerm.app" ]]; then
-	if [[ -x `which powerline-daemon` ]]; then
-		export USE_POWERLINE=1
-		`which powerline-daemon` -q
-	fi
+	export USE_STATUSLINE=1
 fi
 
 if [ -x "$HOME/.aliases" ]; then
