@@ -1,18 +1,27 @@
 [submodule "vimtex"]
 	path = dotfiles/vim/pack/plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
+
 [submodule "vim-racket"]
 	path = dotfiles/vim/pack/plugins/start/vim-racket
 	url = https://github.com/wlangstroth/vim-racket.git
+
 [submodule "vim-airline"]
 	path = dotfiles/vim/pack/plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+
 [submodule "vim-airline-themes"]
 	path = dotfiles/vim/pack/plugins/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
+
 [submodule "vim-gitgutter"]
-	path = dotfiles/vim/pack/plugins/vim-gitgutter
+	path = dotfiles/vim/pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+
 [submodule "vimagit"]
-	path = dotfiles/vim/pack/plugins/vimagit
+	path = dotfiles/vim/pack/plugins/start/vimagit
 	url = https://github.com/jreybert/vimagit.git
+
+[submodule "rust-vim"]
+	path = dotfiles/vim/pack/plugins/start/rust-vim
+	url = https://github.com/rust-lang/rust.vim.git
