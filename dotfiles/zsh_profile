@@ -4,6 +4,8 @@ if [ -x "$HOME/.profile" ]; then
 	source "$HOME/.profile"
 fi
 
+bindkey -v
+
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 if [ -x "$HOME/.iterm2_shell_integration.zsh" ]; then
