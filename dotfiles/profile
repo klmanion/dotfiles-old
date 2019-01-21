@@ -26,8 +26,6 @@ export MANPATH
 export EDITOR="vim"
 export PAGER="less"
 
-export KEYTIMEOUT=1
-
 export LYNX_CFG="$HOME/.lynx.cfg"
 
 unset CLICOLOR
