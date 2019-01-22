@@ -4,8 +4,6 @@ if [ -x "$HOME/.profile" ]; then
 	source "$HOME/.profile"
 fi
 
-bindkey -v
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 if [ -x "$HOME/.iterm2_shell_integration.zsh" ]; then
@@ -16,3 +14,10 @@ if [ -x "/Applications/Racket/share/pkgs/shell-completion/racket-completion.zsh"
 	source "/Applications/Racket/share/pkgs/shell-completion/racket-completion.zsh" 
 fi
 
+bindkey -v
+
+setopt AUTO_CD
+setopt BASH_AUTO_LIST
+setopt COMPLETE_IN_WORD
+setopt LIST_PACKED
+setopt ZLE

@@ -13,8 +13,11 @@ export EDITOR='vim'
 
 export PAGER='most'
 
-setopt EXTENDED_GLOB
 if [ -e "$HOME/.zprezto/init.zsh" ]; then
 	source "$HOME/.zprezto/init.zsh"
+
+	autoload -Uz promptinit
+	promptinit
+	prompt agnoster
 fi
 
