@@ -21,7 +21,7 @@ for f in *; do
 	bkup="$HOME/.$f~"
 
 	if [ -e "$bkup" ]; then
-		rm -fR "$bkup"
+		eval rm -fR "$bkup"*
 	fi
 done
 
