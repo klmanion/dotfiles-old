@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
+#
 #install.sh
-
 # Installs the dotfiles in the directory dotfiles into the home directory.
 # Default behavior is to symlink them, but this can be overriden by a 
 # --copy option.
@@ -20,11 +20,17 @@ fi
 cmd="ln"
 ops="-Ffs"
 
+no_backup=0
+
 while [ $# -gt 0 ]; do
 	case "$1" in
 		(--copy)
 			cmd="cp"
 			ops="-r"
+			;;
+
+		(--no-backup)
+			no_backup=1
 			;;
 		
 		(--verbose)
@@ -34,17 +40,35 @@ while [ $# -gt 0 ]; do
 done
 
 cd dotfiles
-for src in *; do
-	dest="$HOME/.$src"
+for src_base in *; do
+	copy_suffix="~"
+
+	dest_base=".$src_base"
+	copy_base="$dest_base"
+
+	src_prefix="$PWD"
+	dest_prefix="$HOME"
+	copy_prefix="$dest_prefix"
+
+	src="$src_prefix/$src_base"
+	dest="$dest_prefix/$dest_base"
+	copy="$copy_prefix/$copy_base$copy_suffix"
 
 	# backup user configuration
-	test -e "$dest" && mv "$dest" "$dest~"
+	if [ -e "$dest" ]; then
+		if [ $no_backup -eq 0 ]; then
+			while test -e "$copy"; do
+				copy_base="$copy_base$copy_suffix"
+				copy="$copy_prefix/$copy_base$copy_suffix"
+			done
+		fi
 
-	$cmd $ops "$PWD/$src" "$dest"
-	test $? -ne 0 && exit 1;
+		mv -f "$dest" "$copy" || exit 1;
+	fi
 
-	chmod +x "$dest"
-	test $? -ne 0 && exit 1;
+	eval $cmd $ops "$src" "$dest" || exit 1;
+
+	chmod +x "$dest" || exit 1;
 done
 
 exit 0;
