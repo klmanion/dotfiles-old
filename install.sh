@@ -21,6 +21,7 @@ cmd="ln"
 ops="-Ffs"
 
 no_backup=0
+verbose_flg=""
 
 while [ $# -gt 0 ]; do
 	case "$1" in
@@ -34,39 +35,46 @@ while [ $# -gt 0 ]; do
 			;;
 		
 		(--verbose)
-			ops="$ops -v"
+			verbose_flg="-v"
+			;;
+		(*)
+			printf '%s: %s\n' "unrecognized option" "$1"
 			;;
 	esac
+
+	shift
 done
 
-cd dotfiles
-for src_base in *; do
-	copy_suffix="~"
+ops="$ops $verbose_flg"
 
+cd dotfiles
+
+src_prefix="$PWD"
+dest_prefix="$HOME"
+copy_prefix="$dest_prefix"
+copy_suffix="~"
+
+for src_base in *; do
 	dest_base=".$src_base"
 	copy_base="$dest_base"
-
-	src_prefix="$PWD"
-	dest_prefix="$HOME"
-	copy_prefix="$dest_prefix"
 
 	src="$src_prefix/$src_base"
 	dest="$dest_prefix/$dest_base"
 	copy="$copy_prefix/$copy_base$copy_suffix"
 
 	# backup user configuration
-	if [ -e "$dest" ]; then
-		if [ $no_backup -eq 0 ]; then
+	if [ $no_backup -eq 0 ]; then
+		if [ -e "$dest" ]; then
 			while test -e "$copy"; do
 				copy_base="$copy_base$copy_suffix"
 				copy="$copy_prefix/$copy_base$copy_suffix"
 			done
-		fi
 
-		mv -f "$dest" "$copy" || exit 1;
+			eval "mv -f $verbose_flg \"$dest\" \"$copy\"" || exit 1;
+		fi
 	fi
 
-	eval $cmd $ops "$src" "$dest" || exit 1;
+	eval "$cmd $ops \"$src\" \"$dest\"" || exit 1;
 
 	chmod +x "$dest" || exit 1;
 done
