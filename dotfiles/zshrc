@@ -1,7 +1,7 @@
 # .zshrc
 
-if [ -x "$HOME/.zsh_profile" ]; then
-	source "$HOME/.zsh_profile"
+if [ -x "$HOME/.zprofile" ]; then
+	source "$HOME/.zprofile"
 fi
 
 if [ -x "$HOME/.iterm2_shell_integration.zsh" ]; then
