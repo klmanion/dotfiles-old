@@ -19,9 +19,12 @@ fi
 
 #export PATH="/usr/local/MacGPG2/bin:$PATH"
 
+PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
 export PATH
 export MANPATH
 #export INFOPATH
+export PKG_CONFIG_PATH
 
 export EDITOR="vim"
 export PAGER="less"
