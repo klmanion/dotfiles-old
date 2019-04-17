@@ -1,0 +1,5 @@
+# tmux gitignore
+
+resurrect/
+plugins/
+!plugins/tpm/

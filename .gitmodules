@@ -25,3 +25,7 @@
 [submodule "rust-vim"]
 	path = dotfiles/vim/pack/plugins/start/rust-vim
 	url = https://github.com/rust-lang/rust.vim.git
+
+[submodule "tpm"]
+	path = dotfiles/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
