@@ -32,3 +32,6 @@
 [submodule "vim-fugitive"]
 	path = dotfiles/vim/pack/plugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim-tmux-focus-events"]
+	path = dotfiles/vim/pack/plugins/start/vim-tmux-focus-events
+	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
