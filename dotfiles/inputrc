@@ -1,0 +1,27 @@
+#.inputrc
+
+$include /etc/inputrc
+
+set editing-mode vi
+
+set keyseq-timeout 100
+
+set show-mode-in-prompt off
+
+# single tap partially completes word,
+# double tap shows all completions
+set show-all-if-unmodified off
+set show-all-if-ambiguous off
+
+set horizontal-scroll-mode off
+
+$if mode=vi
+	set keymap vi-insert
+
+	"\C-b": backward-word
+	"\C-f": forward-word
+	"\C-a": beginning-of-line
+	"\C-e": end-of-line
+	"\C-l": clear-screen
+	"\C-g": kill-whole-line
+$endif
