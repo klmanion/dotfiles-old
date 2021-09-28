@@ -1,0 +1,14 @@
+# .env
+
+export PATH="/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
+
+export EDITOR='vim'
+export VISUAL=$EDITOR
+export PAGER='less'
+
+export PKG_CONFIG_PATH='/usr/local/opt/libffi/lib/pkgconfig'
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+export HOMEBREW_VERBOSE=0
+

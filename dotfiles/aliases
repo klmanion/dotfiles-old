@@ -1,14 +1,2 @@
-#.rc
+# aliases
 
-unalias -a
-
-alias _grep='grep'
-alias grep='grep --color'
-
-alias l='ls -l'
-alias la='l -A'
-
-alias _top='top'
-alias top='top -R -F -ocpu -O+rsize -n20'
-
-alias eject='diskutil eject'

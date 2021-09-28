@@ -3,6 +3,8 @@
 " Vi-compatibility {{{
 "
 
+set rtp+=/usr/local/opt/fzf
+
 " cpoptions {{{
 " options that effect the behavior of both compatibility modes
 " Vim default: aAbceFs
@@ -98,12 +100,10 @@ set foldenable
 if &foldenable
 	set foldmethod=marker
 	set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-
-	" unfold all
-	" set foldlevelstart=99
+	set foldlevelstart=1
 	
 	" add a fold collumn
-	" set foldcolumn=2
+	set foldcolumn=3
 endif
 " }}}
 
@@ -131,6 +131,7 @@ set noexpandtab
 set tw=79
 
 set cindent
+let c_syntax_for_h = 1
 
 imap <C-l> λ
 
@@ -156,7 +157,7 @@ if has('autocmd')
 		au FileType C set cinoptions=
 		au FileType C set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
 		au FileType C set cino+=Ls,:0,=s,l1,b0
-		au FileType C set cino+=g0,hs,N0,E-s,i0
+		au FileType C set cino+=g0,hs,N-s,E-s,i0
 		au FileType C set cino+=p.5s,+s,t0
 		au FileType C set cino+=c3,C1,/0
 		au FileType C set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
@@ -171,7 +172,7 @@ if has('autocmd')
 		au FileType CPP set cinoptions=
 		au FileType CPP set cino+=>s,e0,n-.5s,f0,{.5s,}0,^0
 		au FileType CPP set cino+=Ls,:0,=s,l1,b0
-		au FileType CPP set cino+=g0,hs,N0,E-s,i0
+		au FileType CPP set cino+=g0,hs,N-s,E-s,i0
 		au FileType CPP set cino+=p.5s,+s,t0
 		au FileType CPP set cino+=c3,C1,/0
 		au FileType CPP set cino+=(0,us,U1,w0,W.5s,ks,m0,M0
@@ -204,17 +205,28 @@ let g:vimtex_view_general_options='-r @line @pdf @tex'
 let g:vimtex_fold_enabled=0
 
 " GTags {{{2
-let Gtags_VerticalWindow = 0
-let Gtags_Auto_Map = 1
-let Gtags_Auto_Update = 1
-let Gtags_No_Auto_Jump = 0
-let Gtags_Close_When_Single = 1
+"let Gtags_VerticalWindow = 0
+"let Gtags_Auto_Map = 1
+"let Gtags_Auto_Update = 1
+"let Gtags_No_Auto_Jump = 0
+"let Gtags_Close_When_Single = 1
+"
+"let GtagsCscope_Auto_Map = 1
+"let GtagsCscope_Auto_Load = 1
 
-let GtagsCscope_Auto_Map = 1
-let GtagsCscope_Auto_Load = 1
-
-set cscopetag
-
+" cscope {{{1
+if has("cscope")
+	set csprg=/usr/local/bin/cscope
+	set csto=0
+	set cscopetag
+	set nocsverb
+	if filereadable("cscope.out")
+		cs add cscope.out
+	elseif $CSCOPE_DB != ""
+		cs add $CSCOPE_DB
+	endif
+	set csverb
+endif
 " }}}1
 
 " vi: set ts=8 sw=8 noexpandtab tw=79:

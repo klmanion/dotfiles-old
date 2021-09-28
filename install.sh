@@ -81,4 +81,4 @@ done
 
 exit 0;
 
-# vim: set ts=8 sw=8 noexpandtab tw=79:
+# vi: set ts=8 sw=8 noexpandtab tw=79:

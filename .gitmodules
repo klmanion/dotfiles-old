@@ -35,3 +35,6 @@
 [submodule "vim-tmux-focus-events"]
 	path = dotfiles/vim/pack/plugins/start/vim-tmux-focus-events
 	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
+[submodule "vim-parinfer"]
+	path = dotfiles/vim/pack/plugins/start/vim-parinfer
+	url = https://github.com/bhurlow/vim-parinfer.git

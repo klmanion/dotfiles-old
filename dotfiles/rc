@@ -1,1 +1,21 @@
-/Users/kurtlmanion/Documents/Programming/dotfiles/dotfiles/aliases
+# rc
+
+PATH=
+
+add_path()
+{
+	if [ -r "$1" ]; then
+		for p in `/bin/cat "$1"`; do
+			PATH="$PATH:$p"
+		done
+	
+		PATH="${PATH#:}"
+	fi
+}
+
+add_path /etc/paths
+add_path /usr/local/etc/paths
+
+export PATH
+
+# vi: set ts=8 sw=8 noexpandtab tw=79:

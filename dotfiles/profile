@@ -1,50 +1,31 @@
 # .profile
 
-if [ -r '/usr/local/etc/paths' ]; then
-	PATH=''
-	for path in `/bin/cat /usr/local/etc/paths`; do
-		[ -n "$path" ] && eval "PATH=$path:\$PATH"
-	done
-	PATH="${PATH%:}"
+if [ -r $HOME/.env ]; then
+	. $HOME/.env
 fi
 
-MANPATH='/usr/share/man:/usr/local/share/man'
-INFOPATH=''
-
-if [ -d '/usr/local/etc/paths.d' ]; then
-	# FIXME: BINPATH
-	for f in /usr/local/etc/paths.d/bin/*; do
-		for path in `cat "$f"`; do
-			[ -n "$path" ] && eval "PATH=$path:\$PATH"
-		done
-	done
-
-	if [ -d '/usr/local/etc/paths.d/doc' ]; then
-
-		for subdir in man info; do
-			for f in /usr/local/etc/paths.d/doc/"$subdir"/*; do
-				for path in `cat "$f"`; do
-					pathvar="${subdir^^}PATH"
-
-					[ -n "$path" ] \
-						&& eval \
-						"$pathvar=$path:\$$pathvar"
-				done
-			done
-		done
-	fi
+if [ -r $HOME/.aliases ]; then
+	. $HOME/.aliases
 fi
 
-#PATH="/usr/local/MacGPG2/bin:$PATH"
-export PATH
-export MANPATH
-export INFOPATH
+#if [ x"${SHELL##*/}" != x"zsh" ]; then
+#	export INPUTRC="$HOME/.inputrc"
+#	bind -f "$INPUTRC"
+#fi
 
 export EDITOR='vim'
-export PAGER='less'
+export VISUAL=$EDITOR
+if [ -n `/usr/bin/whereis most` ]; then
+	PAGER=most
+else
+	PAGER=less
+fi
+export PAGER
 
-export INPUTRC="$HOME/.inputrc"
-bind -f "$INPUTRC"
+export IRCNICK='DrEuclidean'
+export IRCNAME='Fox Mulder'
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export PKG_CONFIG_PATH='/usr/local/opt/libffi/lib/pkgconfig'
 
@@ -54,16 +35,15 @@ export GTAGS_OPTIONS='--objdir'
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
-export HOMEBREW_VERBOSE=1
+export HOMEBREW_VERBOSE=0
 
 export LYNX_CFG="$HOME/.lynx.cfg"
 
-unset CLICOLOR
-export TERM='xterm-256color'
+#unset CLICOLOR
+#export TERM='xterm-256color'
 
-[ -r "$HOME/.rc" ] && . "$HOME/.rc"
+#if [[ x"$TERM_PROGRAM" == x'iTerm.app' ]]; then
+#	export USE_STATUSLINE=1
+#fi
 
-if [[ x"$TERM_PROGRAM" == x'iTerm.app' ]]; then
-	export USE_STATUSLINE=1
-fi
-
+# vi: ts=2 sw=2 noexpandtab tw=79:
