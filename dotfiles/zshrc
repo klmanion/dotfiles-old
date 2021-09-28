@@ -26,6 +26,10 @@ function zsh_directory_name() {
   return 1
 }
 
+if [ ! -d $HOME/.zinit/bin ]; then
+	git clone https://github.com/zdharma/zinit.git $HOME/.zinit/bin
+fi
+
 . $HOME/.zinit/bin/zinit.zsh
 
 export ZSH_THEME="powerlevel10k/powerlevel10k"

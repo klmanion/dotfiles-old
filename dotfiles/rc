@@ -16,6 +16,10 @@ add_path()
 add_path /etc/paths
 add_path /usr/local/etc/paths
 
+if [ -z "$PATH" ]; then
+	PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+fi
+
 export PATH
 
 # vi: set ts=8 sw=8 noexpandtab tw=79:

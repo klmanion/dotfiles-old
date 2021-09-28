@@ -30,6 +30,10 @@ while [ $# -gt 0 ]; do
 			ops="-r"
 			;;
 
+		(--dest-dir=*)
+			dest_prefix="${1#*=}"
+			;;
+
 		(--no-backup)
 			no_backup=1
 			;;
@@ -50,7 +54,7 @@ ops="$ops $verbose_flg"
 cd dotfiles
 
 src_prefix="$PWD"
-dest_prefix="$HOME"
+: ${dest_prefix:="$HOME"}
 copy_prefix="$dest_prefix"
 copy_suffix="~"
 
