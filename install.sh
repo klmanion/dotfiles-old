@@ -82,6 +82,10 @@ install()
 			fi
 		fi
 
+		if [ -d "$dest" ]; then
+			rm -rf "$dest"
+		fi
+
 		eval "$cmd $ops \"$src\" \"$dest\"" || exit 1;
 
 		chmod +x "$dest" || exit 1;
