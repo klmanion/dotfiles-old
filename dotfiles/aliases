@@ -1,6 +1,10 @@
 #### aliases
 ##
 
+### editor
+alias v='${VISUAL:-$EDITOR}'
+alias e='v'
+
 ### ls
 alias l='ls -l'
 alias la='ls -la'
