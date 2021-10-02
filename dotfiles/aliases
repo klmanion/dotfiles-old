@@ -1,2 +1,10 @@
-# aliases
+#### aliases
+##
+
+### ls
+alias l='ls -l'
+alias la='ls -la'
+
+### grep
+alias grep='grep --color'
 
