@@ -51,37 +51,62 @@ done
 
 ops="$ops $verbose_flg"
 
+install()
+{
+	if [ ! -d "$dest_prefix" ]; then
+		mkdir -p "$dest_prefix"
+	fi
+
+	for src_base in *; do
+		if [ x$src_base = x"config" ]; then
+			continue
+		fi
+
+		dest_base="$dest_lead$src_base"
+		copy_base="$dest_base"
+
+		src="$src_prefix/$src_base"
+		dest="$dest_prefix/$dest_base"
+		copy="$copy_prefix/$copy_base$copy_suffix"
+
+		# backup user configuration
+		if [ $no_backup -eq 0 ]; then
+			if [ -e "$dest" ]; then
+				# do not overwrite existing copies
+				while test -e "$copy"; do
+					copy_base="$copy_base$copy_suffix"
+					copy="$copy_prefix/$copy_base$copy_suffix"
+				done
+
+				eval "mv -f $verbose_flg \"$dest\" \"$copy\"" || exit 1;
+			fi
+		fi
+
+		eval "$cmd $ops \"$src\" \"$dest\"" || exit 1;
+
+		chmod +x "$dest" || exit 1;
+	done
+}
+
 cd dotfiles
 
 src_prefix="$PWD"
 : ${dest_prefix:="$HOME"}
+dest_lead="."
 copy_prefix="$dest_prefix"
 copy_suffix="~"
 
-for src_base in *; do
-	dest_base=".$src_base"
-	copy_base="$dest_base"
+install
 
-	src="$src_prefix/$src_base"
-	dest="$dest_prefix/$dest_base"
-	copy="$copy_prefix/$copy_base$copy_suffix"
+cd config
 
-	# backup user configuration
-	if [ $no_backup -eq 0 ]; then
-		if [ -e "$dest" ]; then
-			while test -e "$copy"; do
-				copy_base="$copy_base$copy_suffix"
-				copy="$copy_prefix/$copy_base$copy_suffix"
-			done
+src_prefix="$PWD"
+dest_prefix="$dest_prefix/.config"
+dest_lead=""
+copy_prefix="$dest_prefix"
+copy_suffix="~"
 
-			eval "mv -f $verbose_flg \"$dest\" \"$copy\"" || exit 1;
-		fi
-	fi
-
-	eval "$cmd $ops \"$src\" \"$dest\"" || exit 1;
-
-	chmod +x "$dest" || exit 1;
-done
+install
 
 exit 0;
 
