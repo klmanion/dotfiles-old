@@ -15,7 +15,7 @@ fi
 
 export EDITOR='vim'
 export VISUAL=$EDITOR
-if [ -n `/usr/bin/whereis most` ]; then
+if [ -n "`/usr/bin/whereis most`" ]; then
 	PAGER=most
 else
 	PAGER=less
