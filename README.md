@@ -16,3 +16,9 @@ This sets the method for all the files, so the most graceful solution,
 should one desire some but not all the dotfiles be copied,
 is to install with the copy command then delete the backups before restoring.
 
+# Archival Note
+At one point I comitted the entire contents of cargo, or some such situation,
+and since then have had to use --depth=1 on every pull, which,
+in tandem with the fact that I just overhauled these
+and am currently changing the management method from my custom scripts here to rcm,
+has led me to archive this and start anew.
